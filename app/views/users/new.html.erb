@@ -1,0 +1,58 @@
+<h1>Sign Up</h1>
+<%= form_for @user do |f| %>
+<% if @user.errors.any? %>
+<div class = "user_errors">
+  <h2>Uh Oh...</h2>
+  <ul>
+    <% @user.errors.full_messages.each do |message|%>
+    <li><%=message%></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="text-field">
+
+  <%= f.label :name %>
+  <%= f.text_field :name, type: 'name' %>
+</div>
+
+<div class="text-field">
+  <%= f.label :username %>
+  <%= f.text_field :username, type: 'username' %>
+</div>
+
+<div class="text-field">
+  <%= f.label :website %>
+  <%= f.text_field :website, type: 'website' %>
+</div>
+
+<div class="text-field">
+  <%= f.label :gender %>
+  <%= f.text_field :gender, type: 'gender' %>
+</div>
+
+<div class="text-field">
+  <%= f.label :email %>
+  <%= f.text_field :email, type: 'email' %>
+</div>
+
+<div class="text-field">
+  <%= f.label :about %>
+  <%= f.text_area :about, type: 'about' %>
+</div>
+
+<div class="password-field">
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+</div>
+
+<div class="password-field">
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+</div>
+
+<div class="submit-field">
+    <%= f.submit %>
+</div>
+<% end %>
