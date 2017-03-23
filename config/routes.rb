@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
@@ -6,5 +7,7 @@ Rails.application.routes.draw do
   end
   resources :users
 
+  match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  match 'auth/failure', to: redirect('/'), via: [:get, :post]
   root 'welcome#home'
 end

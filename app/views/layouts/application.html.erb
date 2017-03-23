@@ -8,17 +8,17 @@
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
 
+
     <body>
         <div id="container">
             <div id="user_header">
                 <% if current_user %>
                 Signed in as
                 <%= current_user.username %>
-                |
                 <%= link_to "Logout", logout_path,  method: :delete  %>
                 <% else %>
                 <%= link_to 'Login', login_path %>
-                |
+                <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
                 <%= link_to 'Signup', new_user_path %>
                 <% end %>
             </div>
