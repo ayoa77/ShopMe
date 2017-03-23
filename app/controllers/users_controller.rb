@@ -9,8 +9,7 @@ class UsersController < ApplicationController
     if user_params[:password] != params[:user][:password_confirmation]
       render 'new', notice: 'Sorry your passwords do not match!'
     elsif @user.save
-      session[:id] = @user.id
-      byebug
+      session[:user_id] = @user.id
       redirect_to root_path, notice: 'Thanks for signing up!'
     else
       render 'new'
@@ -28,7 +27,11 @@ class UsersController < ApplicationController
                                  :about,
                                  :gender,
                                  :password,
-                                 :profile_photo
+                                 :profile_photo,
+                                 :provider,
+                                 :uid,
+                                 :oauth_expires_at,
+                                 :oauth_token
                                 )
   end
 
