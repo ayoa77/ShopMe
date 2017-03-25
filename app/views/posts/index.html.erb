@@ -1,0 +1,9 @@
+<h1>Post Index</h1> </br>
+<% @posts.each do |post|%>
+<a href="/posts/<%=post.id%>"><%= image_tag post.post_photo.medium%></a>
+<% u = User.find(post.user_id) %>
+<a href="/users/<%=u.id%>"><%= image_tag u.profile_photo.thumb%></a>
+<a href="/users/<%=u.id%>"><%=u.username%></a>
+<%= post.description %>
+$<%= post.price.round(2) %>0</br>
+<%end%>
