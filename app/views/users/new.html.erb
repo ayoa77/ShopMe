@@ -12,7 +12,6 @@
 <% end %>
 
 <div class="text-field">
-
   <%= f.label :name %>
   <%= f.text_field :name, type: 'name' %>
 </div>
@@ -33,13 +32,18 @@
 </div>
 
 <div class="text-field">
-  <%= f.label :email %>
-  <%= f.text_field :email, type: 'email' %>
+  <%= f.label :about %>
+  <%= f.text_area :about, type: 'about' %>
 </div>
 
 <div class="text-field">
-  <%= f.label :about %>
-  <%= f.text_area :about, type: 'about' %>
+  <%= f.label :profile_photo %>
+  <%= f.file_field :profile_photo, type: 'profile_photo' %>
+</div>
+
+<div class="text-field">
+  <%= f.label :email %>
+  <%= f.text_field :email, type: 'email' %>
 </div>
 
 <div class="password-field">

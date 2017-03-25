@@ -1,0 +1,13 @@
+
+<%=image_tag @user.profile_photo.medium if @user.profile_photo.medium.present? %>
+<h1><%=@user.username%></h1>
+<%= link_to 'Edit your profile', edit_user_path(current_user) if @user == current_user %>
+<%= link_to @user.website %> </br>
+<%= @user.about %> </br>
+
+<% @posts.each do |post|%>
+<p><%=image_tag post.post_photo.medium %> <%= link_to post_path(post) %> </p></br>
+<% u = User.find(post.user_id) %>
+<%= post.description %>
+<%= post.price.round(2) %> </br>
+<%end%>
