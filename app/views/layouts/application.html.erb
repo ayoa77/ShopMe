@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <title>ShopMe</title>
         <%= csrf_meta_tags %>
 
@@ -8,26 +17,30 @@
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
 
-
     <body>
         <div id="container">
             <div id="user_header">
                 <% if current_user %>
                 Signed in as
-                <%= current_user.username %> </br>
-                <%= link_to "Logout", logout_path,  method: :delete  %> </br>
-                <%= link_to "Post Something", new_post_path %>
-                <%= link_to "Shop Around", posts_path %>
-                <% else %>
-                <%= link_to 'Login', login_path %>
-                <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-                <%= link_to 'Signup', new_user_path %>
-                <% end %>
-            </div>
-            <% if flash[:notice] %>
-            <p id="notice"><%= flash[:notice] %></p>
-            <% end %>
-        </div>
-        <%= yield %>
-    </body>
+                <%= current_user.username %>
+            </br>
+            <%= link_to "Logout", logout_path,  method: :delete  %>
+        </br>
+        <%= link_to "Post Something", new_post_path %>
+        <%= link_to "Shop Around", posts_path %>
+    <% else %>
+        <%= link_to 'Login', login_path %>
+        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+        <%= link_to 'Signup', new_user_path %>
+        <% end %>
+    </div>
+    <% flash.each do |key, value| %>
+          <div class="<%= flash_class(key.to_sym) %>">
+                <%= value %>
+          </div>
+
+    <% end %>
+</div>
+<%= yield %>
+</body>
 </html>
