@@ -2,8 +2,9 @@
 
 <%=image_tag @post.post_photo.medium %></br>
 <% u = User.find(@post.user_id) %>
-<a href="/users/<%=u.id%>"><%= image_tag u.profile_photo.thumb%></a>
+<a href="/users/<%=u.id%>"><%= image_tag u.profile_photo.thumb%></a><br>
 <a href="/users/<%=u.id%>"><%= u.username %></a>
 <%= @post.description %>
-<%= @post.price.round(2) %> </br>
+$<%= @post.price.round(2) %>0</br>
+<%= link_to "Buy Now", braintree_new_path(@post) %> 
 <%= link_to "Edit this post", edit_post_path(@post) if current_user.id == @post.user_id %>
