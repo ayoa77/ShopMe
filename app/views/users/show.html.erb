@@ -6,8 +6,7 @@
 <%= @user.about %> </br>
 
 <% @posts.each do |post|%>
-<p><%=image_tag post.post_photo.medium %> <%= link_to post_path(post) %> </p></br>
-<% u = User.find(post.user_id) %>
+<a href="/posts/<%=post.id%>"><%= image_tag post.post_photo.medium%></a>
 <%= post.description %>
-<%= post.price.round(2) %> </br>
+$<%= post.price.round(2) %>0</br>
 <%end%>

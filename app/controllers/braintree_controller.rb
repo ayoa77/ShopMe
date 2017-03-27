@@ -1,7 +1,6 @@
 class BraintreeController < ApplicationController
   def new
     @client_token = Braintree::ClientToken.generate
-    byebug
 if params[:format].present?
     @post = Post.find(params[:format])
   else
