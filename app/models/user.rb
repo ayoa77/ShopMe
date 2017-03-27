@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 require 'securerandom'
+include PgSearch
+multisearchable :against => :username
 mount_uploader :profile_photo, PhotoUploader
 has_many :posts
 has_secure_password
